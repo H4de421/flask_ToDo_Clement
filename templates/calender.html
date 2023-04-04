@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO APP | calender </title>
+
+
+    <link rel="stylesheet" type="text/css" href="../static/css/callender.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1 class="title">TO<span>DO</span> LIST APP</h1>
+        <h2 class="title" >Calender page</h2>
+    </header>
+    <div>
+        <h1 class="Liste" style="text-transform:uppercase;" >timetable of tasks :</h1>
+    </div>
+    <section class="box-container">
+        {% for todo in todos %}
+            <div class="{% if todo['degree'] == "Important" %} todo_calender {% else %} todo_calender_notIm {% endif %}">
+                <h2 style="text-transform:uppercase;">{{ todo['content'] }}</h2>
+                {% if todo['degree']=="Important" %}
+                    <p><em><span>{{ todo['degree'] }}</span></em></p>
+                {% else %}
+                    <p><em>{{ todo['degree'] }}</em></p>
+                {% endif %}
+                <p>Due to : {{ todo['date'] }} </p>
+                <p class="day_left" >{{ todo['days'] }} days left </p>
+            </div>
+        {% endfor %}
+    </section>
+
+    <footer>
+        <div class="wave" style="overflow: hidden;" >
+            <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+                <path d="M0.00,49.98 C121.32,189.97 281.60,-78.45 500.00,49.98 L500.00,0.00 L0.00,0.00 Z" style="stroke: none; fill: #1e1e1e;"></path>
+            </svg>
+        </div>
+        <div class="icones">
+            <p><a href="../"><i class="fa-solid fa-house" style="color: #ffffff;"></i></a></p>
+        </div>
+        <div class="container-media" style="margin-bottom: -10px">
+            <video loop muted autoplay poster="../static/videos/test_CA4_1.png" >
+            <source src="../static/videos/test_CA4_30001-0240.mp4" type="video/mp4">
+            </video>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/3ee84fa655.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

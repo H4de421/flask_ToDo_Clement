@@ -1,0 +1,222 @@
+header {
+    text-align: center;
+    color: white;
+    background-color: #1e1e1e;
+    font-size: xx-large;
+    margin: 0px;
+    padding-bottom: 5%;
+    padding-top: 0%;
+    width: 100%;
+
+}
+
+
+header button {
+    padding: 10px;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+    color: #ffffff;
+    background-color: #1e1e1e!important;
+    border: 1px solid #ff4400;
+    transition: all 0.5s ease-in-out;
+}
+
+.title {
+    color:white;
+    font-family: 'Raleway', sans-serif ;
+    text-decoration: underline;
+    text-decoration-color: #ff4400;
+    text-decoration-thickness: 5px;
+    padding: 5%;
+    margin: 0px;
+}
+
+h1 span {
+    color: #ff4400;
+}
+
+body {
+    margin: 0px;
+}
+
+.container-media {
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    object-fit: cover;
+    size: auto;
+    position: relative;
+
+}
+
+.icones {
+    font-family: 'Raleway', sans-serif;
+    font-size: xxx-large;
+    color: white;
+    text-align: center;
+    padding-top: 0px;
+    margin-top: 0%;
+    z-index :1;
+}
+
+.wave {
+    height: 300px;
+    padding: 0%;
+    margin-top: -100px;
+    z-index :1;
+}
+
+.content {
+    font-family: 'Raleway', sans-serif;
+    font-size: x-large;
+    color: white;
+    text-align: center;
+    background-color: #1e1e1e;
+    padding-top: 50px;
+    margin-top: 0%;
+}
+
+input[type="radio"].button {
+  display: none;
+}
+input[type="radio"].button + label {
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+  color: #ffffff;
+  background-color: #1e1e1e;
+  border: 1px solid transparent;
+  transition: all 0.5s ease-in-out;
+}
+input[type="radio"].button.imp:hover + label {
+  background-color: #1e1e1e;
+  border-color: #7c7c7c;
+}
+input[type="radio"].button.imp:checked + label {
+  background-color: #1e1e1e;
+  border-color: #ffffff;
+}
+input[type="radio"].button.Unimp:hover + label {
+  background-color: #1e1e1e;
+  border-color: #852700;
+}
+input[type="radio"].button.Unimp:checked + label {
+  background-color: #1e1e1e;
+  border-color: #ff4400;
+}
+
+input[type="text"] {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+    color : white;
+    background-color: #1e1e1e;
+    text-align: center;
+}
+
+input[type="submit"].delete {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+    color : #ff4400;
+    background-color: #1e1e1e;
+    border-color: #ff4400;
+    border: 1px solid;
+    transition: all 0.5s ease-in-out;
+}
+input[type="date"] {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+    color: #ffffff;
+      background-color: #1e1e1e;
+    border: 1px solid transparent;
+    transition: all 0.5s ease-in-out;
+}
+button[type="submit"] {
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+    color: #ffffff;
+    background-color: #1e1e1e;
+    transition: all 0.5s ease-in-out;
+
+}
+
+.search {
+    font-family: 'Raleway', sans-serif;
+    font-size: large;
+    border: none;
+}
+
+
+.todo {
+    font-family: 'Raleway', sans-serif;
+    font-size: x-large;
+    color: white;
+    text-align: center;
+    background-color: #1e1e1e;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+h1[class="Liste"] {
+    padding: 3%;
+    color :  white;
+    text-decoration: underline;
+    text-decoration-color: #ff4400;
+    text-decoration-thickness: 4px;
+}
+
+p span {
+    color: red;
+}
+
+.todo_calender {
+    width: 20%;
+    font-family: 'Raleway', sans-serif;
+    font-size: medium;
+    color: white;
+    text-align: left;
+    background-color: #1e1e1e;
+    padding: 40px;
+    margin: 3%;
+    border-style: solid;
+    border-color: #ff4400;
+    border-width: 4px;
+}
+.todo_calender h2 {
+    font-size: x-large;
+    margin-left: -5%;
+    margin-top: -5%;
+}
+
+
+.box-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1%;
+
+}
+body {
+    background-color: #1e1e1e;
+}
+
+footer {
+    min-height: 370px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
