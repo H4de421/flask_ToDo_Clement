@@ -1,27 +1,28 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, session
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from datetime import datetime
 from datetime import date
+import bcrypt
 
 app = Flask(__name__)
 # client = MongoClient('localhost', 27017)
 # client = MongoClient('localhost', 27017, username='username', password='password')
 
-client = MongoClient("mongodb+srv://Clement:Loutre102003)@cluster0.mpozlpx.mongodb.net/?retryWrites=true&w=majority")
-db = client.test
-
-
-
+client = MongoClient("mongodb+srv://hade:Loutre@cluster0.dkflsnn.mongodb.net/?retryWrites=true&w=majority")
 db = client.flask_db
+records = db.register
+
 todo = db.todo
 search_date = ""
 search_name = ""
+logged = False
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
     global search_date
     global search_name
+    global logged
 
 
     if request.method == 'POST' and "content" in request.form.keys():
@@ -46,13 +47,12 @@ def index():
         return redirect(url_for('name'))
 
     all_todos = todo.find()
-    return render_template('index.html', todos=all_todos)
+    return render_template('index.html', todos=all_todos, logged=False)
 
 def get_remainig_day(date1,date2):
     date1_c = datetime.strptime(date1, "%Y-%m-%d")
     date2_c = datetime.strptime(date2, "%Y-%m-%d")
     return (date2_c-date1_c).days
-
 
 @app.route('/calender/', methods=('GET', 'POST'))
 def callender():

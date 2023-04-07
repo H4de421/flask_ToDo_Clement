@@ -23,19 +23,27 @@
 <body>
     <header>
         <h1 class="title">TO<span>DO</span> LIST APP</h1>
-        <div class="button-container">
-            <button class="calender"><a href="calender/" style="color: white; text-decoration: none">Calender</a></button>
-            <div >
-                <form method="post">
-                    <button type="submit" class="search">search by Date :</button>
-                    <input name="search_Date" type="date" value="search date" required >
-                </form>
-                <form method="post">
-                    <button type="submit" class="search">search by Name :</button>
-                    <input name="search_Name" type="text"  placeholder="starting by" required  >
-                </form>
+        {% if logged %}
+            <div class="button-container">
+                <p>rdfqhdgHCD{{ logged }}</p>
+                <button class="calender"><a href="calender/" style="color: white; text-decoration: none">Calender</a></button>
+                <div >
+                    <form method="post">
+                        <button type="submit" class="search">search by Date :</button>
+                        <input name="search_Date" type="date" value="search date" required >
+                    </form>
+                    <form method="post">
+                        <button type="submit" class="search">search by Name :</button>
+                        <input name="search_Name" type="text"  placeholder="starting by" required  >
+                    </form>
+                </div>
             </div>
-        </div>
+        {% else %}
+            <div>
+                <h2> You need to be logged to acces the app</h2>
+                <p><a href="#" class="search" >log in</a></p>
+            </div>
+        {% endif %}
     </header>
 
     <section>
