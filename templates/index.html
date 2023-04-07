@@ -25,7 +25,6 @@
         <h1 class="title">TO<span>DO</span> LIST APP</h1>
         {% if logged %}
             <div class="button-container">
-                <p>rdfqhdgHCD{{ logged }}</p>
                 <button class="calender"><a href="calender/" style="color: white; text-decoration: none">Calender</a></button>
                 <div >
                     <form method="post">
@@ -40,8 +39,8 @@
             </div>
         {% else %}
             <div>
-                <h2> You need to be logged to acces the app</h2>
-                <p><a href="#" class="search" >log in</a></p>
+                <h3 class="title"> You need to be logged to acces the app</h3>
+                <p><a class="title" style="text-decoration: none;color: white" href="#" >log in</a></p>
             </div>
         {% endif %}
     </header>
@@ -53,49 +52,51 @@
         </video>
     </div>
     </section>
-    <section>
-        <div class="content">
-        <form method="post">
-            <p>
-                <b><label for="content">TODO CONTENT :</label></b>
-            </p>
-            <p>
-                <input type="text" name="content"
-                    placeholder=" TODO content">
-            </p>
+    {% if  logged%}
 
-            <p>
-                <b><label for="degree">DEGREE :</label></b>
-            </p>
-            <p>
-                <input id="degree-0" name="degree" required type="radio" value="Important" class="button Unimp" checked>
-                <label for="degree-0">Important</label>
-            </p>
-            <p>
-                <input id="degree-1" name="degree" required type="radio" value="Unimportant" class="button imp">
-                <label for="degree-1">Unimportant</label>
-            </p>
+        <section>
+            <div class="content">
+            <form method="post">
+                <p>
+                    <b><label for="content">TODO CONTENT :</label></b>
+                </p>
+                <p>
+                    <input type="text" name="content"
+                        placeholder=" TODO content">
+                </p>
 
-            <p>
-                <label for="date">To do before :</label>
-                <input id="date" name="date" required type="date" value="ToDo date">
-            </p>
+                <p>
+                    <b><label for="degree">DEGREE :</label></b>
+                </p>
+                <p>
+                    <input id="degree-0" name="degree" required type="radio" value="Important" class="button Unimp" checked>
+                    <label for="degree-0">Important</label>
+                </p>
+                <p>
+                    <input id="degree-1" name="degree" required type="radio" value="Unimportant" class="button imp">
+                    <label for="degree-1">Unimportant</label>
+                </p>
 
-            <button type="submit">Submit</button>
-        </form>
-        <h1 class="Liste"> TODO LIST :</h1>
-        {% for todo in todos %}
-                <div class="todo">
-                    <p>{{ todo['content'] }}   <span><b><i>  ->  {{ todo['degree']}}</i></b></span></p>
-                    <p><em>due for</em> : {{ todo['date'] }}</p>
-                    <form method="POST" action="{{ url_for('delete', id=todo['_id']) }}" >
-                        <input type="submit" class="delete" value="Done"
-                               onclick="return confirm('Are you sure you want to delete this entry?')">
-                    </form>
-                </div>
-        {% endfor %}
-        </div>
-    </section>
+                <p>
+                    <label for="date">To do before :</label>
+                    <input id="date" name="date" required type="date" value="ToDo date">
+                </p>
+
+                <button type="submit">Submit</button>
+            </form>
+            <h1 class="Liste"> TODO LIST :</h1>
+            {% for todo in todos %}
+                    <div class="todo">
+                        <p>{{ todo['content'] }}   <span><b><i>  ->  {{ todo['degree']}}</i></b></span></p>
+                        <p><em>due for</em> : {{ todo['date'] }}</p>
+                        <form method="POST" action="{{ url_for('delete', id=todo['_id']) }}" >
+                            <input type="submit" class="delete" value="Done"
+                                   onclick="return confirm('Are you sure you want to delete this entry?')">
+                        </form>
+                    </div>
+            {% endfor %}
+            </div>
+        </section>
     <footer >
         <div class="container-media" style="margin-bottom: -10px">
             <video loop muted autoplay poster="../static/videos/test_CA4_1.png" >
@@ -103,5 +104,6 @@
             </video>
         </div>
     </footer>
+    {% endif %}
 </body>
 </html>
