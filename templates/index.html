@@ -22,9 +22,13 @@
 
 <body>
     <header>
+        {% if logged %}
+            <button class="calender2"><a href="/logout" style="color: white; text-decoration: none">logout</a></button>
+        {% endif %}
         <h1 class="title">TO<span>DO</span> LIST APP</h1>
         {% if logged %}
             <div class="button-container">
+            <p>{{ message }}</p>
                 <button class="calender"><a href="calender/" style="color: white; text-decoration: none">Calender</a></button>
                 <div >
                     <form method="post">
@@ -39,8 +43,10 @@
             </div>
         {% else %}
             <div>
-                <h3 class="title"> You need to be logged to acces the app</h3>
-                <p><a class="title" style="text-decoration: none;color: white" href="#" >log in</a></p>
+                <h3 class="title"> You need to be logged to access the app</h3>
+                <p><a class="title" style="text-decoration: none;color: white;padding-bottom: 5%" href="/register" >register</a></p>
+                <br>
+                <p><a class="title" style="text-decoration: none;color: white;margin: 2%" href="/login" >log in</a></p>
             </div>
         {% endif %}
     </header>

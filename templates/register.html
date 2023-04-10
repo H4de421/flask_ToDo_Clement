@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO APP | Register PAGE</title>
+    <style>
+        .todo {
+            padding: 20px;
+            margin: 10px;
+            background-color: #eee;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+    <header>
+        <h1 class="title">TO<span>DO</span> LIST APP</h1>
+        <div class="button-container">
+            <div >
+                <h3> {{ message }}</h3>
+                <form method="post">
+                    <input name="username" type="text" placeholder="username" required >
+                    <br>
+                    <input name="email" type="text" placeholder="email" required >
+                    <br>
+                    <input name="password" type="text" placeholder="password" required >
+                    <br>
+                    <button type="submit" class="search">login </button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <section>
+    <div class="container-media" style="margin-bottom: -10px">
+        <video loop muted autoplay poster="../static/videos/test_CA4_1.png" >
+        <source src="../static/videos/test_CA4_30001-0240.mp4" type="video/mp4">
+        </video>
+    </div>
+    </section>
+</body>
+</html>

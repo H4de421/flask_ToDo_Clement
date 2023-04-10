@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, session
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from datetime import datetime
@@ -12,17 +12,24 @@ client = MongoClient("mongodb+srv://hade:Loutre@cluster0.dkflsnn.mongodb.net/?re
 db = client.flask_db
 records = db.register
 
+app.secret_key = "H4de"
+
+user_collection = db.user
 todo = db.todo
 search_date = ""
 search_name = ""
 logged = False
+
+import pymongo
+import bcrypt
+
+
 
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
     global search_date
     global search_name
-    print("test")
 
     if request.method == 'POST' and "content" in request.form.keys():
         # first of 3 possible form : création form
@@ -44,7 +51,6 @@ def index():
         return redirect(url_for('name'))
 
     all_todos = todo.find()
-    print("ok test")
     return render_template('index.html', todos=all_todos, logged=logged)
 
 
@@ -101,6 +107,71 @@ def delete(id):
     todo.delete_one({"_id": ObjectId(id)})
     return redirect(url_for('index'))
 
+
+@app.route("/login", methods=["POST", "GET"])
+def login():
+    print("login")
+    global logged
+    message = 'Please login to your account'
+    if "email" in session:
+        logged = True
+        return redirect(url_for("index"))
+
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        email_found = records.find_one({"email": email})
+        if email_found:
+            email_val = email_found['email']
+            passwordcheck = email_found['password']
+
+            if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
+                session["email"] = email_val
+                logged = True
+                return redirect(url_for('index'))
+            else:
+                if "email" in session:
+                    logged = True
+                    return redirect(url_for("index"))
+                message = 'Wrong password'
+                return render_template('login.html', message=message)
+        else:
+            message = 'Email not found'
+            return render_template('login.html', message=message)
+    return render_template('login.html', message=message)
+
+@app.route("/register", methods=["POST", "GET"])
+def register():
+    print("register")
+    global logged
+    if request.method == 'POST':
+        user = request.form['password']
+        password = request.form['password']
+        email = request.form['email']
+
+        user_found = records.find_one({"name": user})
+        email_found = records.find_one({"email": email})
+
+        if user_found:
+            message = 'There already is a user by that name'
+            return render_template('register.html', message=message)
+        if email_found:
+            message = 'This email already exists in database'
+            return render_template('register.html', message=message)
+        else:
+            hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+            user_input = {'name': user, 'email': email, 'password': hashed}
+            records.insert_one(user_input)
+            logged = True;
+            return render_template('login.html',message="successfully register")
+    return render_template('register.html')
+
+@app.route("/logout", methods=["POST", "GET"])
+def logout():
+    global logged
+    logged=False
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run()
