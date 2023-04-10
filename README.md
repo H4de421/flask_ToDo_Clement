@@ -32,3 +32,5 @@ You remenber somenthing you need to di, but don't remenber de the deadline? I'ts
 enter the begining of your task name and the app will show you all task with the same begining
 ![my image](static/images/name.png "name")
 
+
+For more security you need to be connected for using this app, but don't worry, your password will be crypted for always more security
